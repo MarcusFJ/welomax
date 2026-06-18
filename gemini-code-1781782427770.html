@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welo Max | Premium FiveM Snus</title>
+    <!-- Henter en moderne, ren skrifttype fra Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f7f9fa;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --accent-color: #ff4757;
+            --dark-btn: #1e272e;
+            --radius-large: 32px;
+            --radius-btn: 50px;
+            --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 45px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .cart {
+            background: var(--card-bg);
+            padding: 8px 20px;
+            border-radius: var(--radius-btn);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            font-weight: 500;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        p.subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 3rem auto;
+            font-weight: 300;
+        }
+
+        /* Container & Grid */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 2rem 6rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            justify-items: center;
+        }
+
+        /* Product Cards */
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-large);
+            padding: 3rem 2rem;
+            text-align: center;
+            width: 100%;
+            max-width: 340px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+            transition: transform 0.5s ease;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .product-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            min-height: 45px;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--dark-btn);
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: var(--radius-btn);
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+            background-color: #ffffff;
+            margin-bottom: 4rem;
+        }
+
+        .features-flex {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 250px;
+            padding: 2rem;
+            background: var(--bg-color);
+            border-radius: var(--radius-large);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 280px;
+            background-color: var(--dark-btn);
+            color: #fff;
+            text-align: center;
+            border-radius: var(--radius-btn);
+            padding: 16px 24px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 40px;
+            transform: translateX(-50%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), fadeout 0.4s 2.5s forwards;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0; transform: translate(-50%, 20px);}
+            to {bottom: 40px; opacity: 1; transform: translate(-50%, 0);}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 40px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            p.subtitle { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Welo<span>Max</span></div>
+        <div class="cart">
+            🛒 <span id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Welo Max</h1>
+        <p class="subtitle">Den ultimative og mest eksklusive snus-oplevelse til dit liv i Los Santos.</p>
+        <button class="btn" style="width: auto; padding: 16px 45px;" onclick="document.getElementById('produkter').scrollIntoView({behavior: 'smooth'})">Udforsk Udvalget</button>
+    </header>
+
+    <div class="features">
+        <div class="features-flex">
+            <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <h3>Maximal Effekt</h3>
+                <p>Specialudviklet formel der sikrer, at du altid er flyvende.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🌿</div>
+                <h3>Premium Kvalitet</h3>
+                <p>Produceret i Vulcar med de absolut reneste ingredienser.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎭</div>
+                <h3>100% RP Venligt</h3>
+                <p>Perfekt accessory til at skabe unikke scenarier.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="produkter">
+        <div class="products-grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="welo_air.jpg" alt="Welo Max - Taste of Air" class="product-img">
+                <h3 class="product-title">Taste of Air</h3>
+                <p class="product-desc">Ren, usynlig og uendelig let. Perfekt til når du bare har brug for at trække vejret.</p>
+                <div class="price">DKK 45,-</div>
+                <button class="btn" onclick="addToCart('Taste of Air')">Tilføj til kurv</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="welo_racism.jpg" alt="Welo Max - Taste of Racism" class="product-img">
+                <h3 class="product-title">Taste of Racism</h3>
+                <p class="product-desc">En kontroversiel smag, der med garanti skaber reaktioner i gadebilledet.</p>
+                <div class="price">DKK 55,-</div>
+                <button class="btn" onclick="addToCart('Taste of Racism')">Tilføj til kurv</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="welo_capitalism.png" alt="Welo Max - Taste of Capitalism" class="product-img">
+                <h3 class="product-title">Taste of Capitalism</h3>
+                <p class="product-desc">Smagen af grønne sedler og ren profit. Til forretningsmanden, der vil have det hele.</p>
+                <div class="price">DKK 65,-</div>
+                <button class="btn" onclick="addToCart('Taste of Capitalism')">Tilføj til kurv</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="welo_dragonpee.jpg" alt="Welo Max - Taste of Dragonpee" class="product-img">
+                <h3 class="product-title">Taste of Dragonpee</h3>
+                <p class="product-desc">Varm, brændende og potent. Giver et magisk spark direkte under overlæben.</p>
+                <div class="price">DKK 50,-</div>
+                <button class="btn" onclick="addToCart('Taste of Dragonpee')">Tilføj til kurv</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="welo_mysoul.jpg" alt="Welo Max - Taste of My Soul" class="product-img">
+                <h3 class="product-title">Taste of "My Soul"</h3>
+                <p class="product-desc">Mørk, kold og dejligt tom. En snus der matcher dybden af din sjæl.</p>
+                <div class="price">DKK 60,-</div>
+                <button class="btn" onclick="addToCart('Taste of My Soul')">Tilføj til kurv</button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Welo Max. Fremstillet til brug i FiveM / GTA V Rollespil.</p>
+        <p style="margin-top: 5px; opacity: 0.6;">Dette er et fiktivt produkt skabt til gaming.</p>
+    </footer>
+
+    <div id="toast">Vare tilføjet!</div>
+
+    <script>
+        let cartTotal = 0;
+
+        function addToCart(productName) {
+            cartTotal++;
+            document.getElementById('cart-count').innerText = cartTotal;
+            
+            var toast = document.getElementById("toast");
+            toast.innerText = productName + " lagt i kurven";
+            
+            // Genstart animationen for toast
+            toast.classList.remove("show");
+            void toast.offsetWidth; // Trigger reflow
+            toast.classList.add("show");
+            
+            setTimeout(function(){ 
+                toast.classList.remove("show"); 
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
